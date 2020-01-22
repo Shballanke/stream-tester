@@ -17,6 +17,7 @@ class StreamServiceTest extends StApplicationTests {
 
     @Test
     void sortByStringValue() {
+        log.info("*** Stream service sort by string ***");
         for (int i = 0; i < TEST_COUNT; i++) {
             List<TestObject1> testObject1List = generateTestObjectList(OBJECT_COUNT);
             log.info("Stream service sort by string for: " + getSortByStringTime(testObject1List) + "ns");
@@ -25,6 +26,7 @@ class StreamServiceTest extends StApplicationTests {
 
     @Test
     void getStringList() {
+        log.info("*** Stream service map to string list ***");
         for (int i = 0; i < TEST_COUNT; i++) {
             List<TestObject1> testObject1List = generateTestObjectList(OBJECT_COUNT);
             log.info("Stream service return string list for: " + getStringListTime(testObject1List) + "ns");
@@ -33,6 +35,7 @@ class StreamServiceTest extends StApplicationTests {
 
     @Test
     void copyToOtherList() {
+        log.info("*** Stream service copy objects to other list ***");
         for (int i = 0; i < TEST_COUNT; i++) {
             List<TestObject1> testObject1List = generateTestObjectList(OBJECT_COUNT);
             log.info("Stream service copy objects to other list for: " + getCopyListTime(testObject1List) + "ns");
