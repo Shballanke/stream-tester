@@ -1,12 +1,8 @@
 package ru.romanov.st;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
-import ru.romanov.st.item.TestObject;
-import ru.romanov.st.service.StreamService;
+import ru.romanov.st.item.TestObject1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +17,10 @@ public class StApplicationTests {
     void contextLoads() {
     }
 
-    public List<TestObject> generateTestObjectList(int objectsCount) {
-        List<TestObject> output = new ArrayList<>();
+    public List<TestObject1> generateTestObjectList(int objectsCount) {
+        List<TestObject1> output = new ArrayList<>();
         for (int i = 0; i < objectsCount; i++) {
-            output.add(new TestObject());
+            output.add(new TestObject1());
         }
         return output;
     }

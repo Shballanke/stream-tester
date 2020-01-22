@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.romanov.st.StApplicationTests;
-import ru.romanov.st.item.TestObject;
+import ru.romanov.st.item.TestObject1;
 
 import java.util.List;
 
@@ -18,29 +18,44 @@ class StreamServiceTest extends StApplicationTests {
     @Test
     void sortByStringValue() {
         for (int i = 0; i < TEST_COUNT; i++) {
-            List<TestObject> testObjectList = generateTestObjectList(OBJECT_COUNT);
-            log.info("Stream service sort by string for: " + getSortByStringTime(testObjectList) + "ns");
+            List<TestObject1> testObject1List = generateTestObjectList(OBJECT_COUNT);
+            log.info("Stream service sort by string for: " + getSortByStringTime(testObject1List) + "ns");
         }
     }
 
     @Test
     void getStringList() {
         for (int i = 0; i < TEST_COUNT; i++) {
-            List<TestObject> testObjectList = generateTestObjectList(OBJECT_COUNT);
-            log.info("Stream service return string list for: " + getStringListTime(testObjectList) + "ns");
+            List<TestObject1> testObject1List = generateTestObjectList(OBJECT_COUNT);
+            log.info("Stream service return string list for: " + getStringListTime(testObject1List) + "ns");
         }
     }
 
-    private long getSortByStringTime(List<TestObject> testObjectList) {
+    @Test
+    void copyToOtherList() {
+        for (int i = 0; i < TEST_COUNT; i++) {
+            List<TestObject1> testObject1List = generateTestObjectList(OBJECT_COUNT);
+            log.info("Stream service copy objects to other list for: " + getCopyListTime(testObject1List) + "ns");
+        }
+    }
+
+    private long getSortByStringTime(List<TestObject1> testObject1List) {
         long start = System.nanoTime();
-        streamService.sortByStringValue(testObjectList);
+        streamService.sortByStringValue(testObject1List);
         long end = System.nanoTime();
         return end - start;
     }
 
-    private long getStringListTime(List<TestObject> testObjectList) {
+    private long getStringListTime(List<TestObject1> testObject1List) {
         long start = System.nanoTime();
-        streamService.getStringList(testObjectList);
+        streamService.getStringList(testObject1List);
+        long end = System.nanoTime();
+        return end - start;
+    }
+
+    private long getCopyListTime(List<TestObject1> testObject1List) {
+        long start = System.nanoTime();
+        streamService.copyToOtherList(testObject1List);
         long end = System.nanoTime();
         return end - start;
     }
